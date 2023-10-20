@@ -7,7 +7,7 @@ You will need [GEE](https://earthengine.google.com/), [R](https://www.r-project.
 ## Analyses and files included in this repository
 Landsat Timeseries - the **SoCalTimeseries.js** GEE script is for preprocessing Landsat timeseries and exporting wetland NDVI and habitat composition as a csv. This script is based on a shared feature collection of wetland boundaries ("TS_Estuary_Boundaries_092720_fixed") for which the user selects one wetland at a time. The script will process timeseries per site and export a csv to a user-defined Google Drive folder.
 
-Environmental Trends - **R_Environmental Time Series.r** R script processes input data stored in the "files" folder to create plots and estimate trends in regional environmental drivers.
+Environmental Trends - **R_Environmental Time Series.r** processes input data stored in the "files" folder to create plots and estimate trends in regional environmental drivers.
 
 Wetland NDVI and Habitat Timeseries and Trends - **R_Time Series Trend Analysis.r** takes post-processed annual timeseries for each wetland site stored in the "files" folder and estimates trends in wetland condidions. Trends are then compared to site characteristics and human drivers. This script also plots and exports timeseries of NDVI and habitat area for each site.
 
