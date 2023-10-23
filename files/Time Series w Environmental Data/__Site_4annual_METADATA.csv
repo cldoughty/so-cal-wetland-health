@@ -1,0 +1,42 @@
+Variable,Format,Description
+Site,String,Name of wetland site
+Year,Numeric,Year in format YYYY
+scene_count,Numeric,Number of Landsat scenes contributing to annual wetland NDVI and habitat composition timeseries
+restStage,String,"Restoration category for each year; signifies no, pre-restoration, restoration, and post-restoration "
+NDVI_sd,Numeric,Annual NDVI standard deviation
+NDVI_min,Numeric,Annual NDVI min
+NDVI_max,Numeric,Annual NDVI max
+NDVI_mean,Numeric,Annual NDVI mean
+landArea_sd,Numeric,Annual land area standard deviation
+landArea_min,Numeric,Annual land area min
+landArea_max,Numeric,Annual land area max
+landArea_mean,Numeric,Annual land area mean
+percLandArea,Numeric,Annual land area percent
+waterArea_sd,Numeric,Annual water area standard deviation
+waterArea_min,Numeric,Annual water area min
+waterArea_max,Numeric,Annual water area max
+waterArea_mean,Numeric,Annual water area mean
+percWaterArea,Numeric,Annual water area percent
+SeaLevel_mean,Numeric,Annual sea level mean in NAVD88 gap-filled
+SeaLevel_mean_filled,Numeric,Annual sea level mean in NAVD89
+waveHs_max,Numeric,Annual CDIP significant wave height max
+waveHs_sd,Numeric,Annual CDIP significant wave height standard deviation
+waveHs_mean,Numeric,Annual CDIP significant wave height mean
+waveTp_mean,Numeric,Annual CDIP peak wave period mean
+waveTa_mean,Numeric,Annual CDIP average wave period mean
+Discharge_mean_cms_sum,Numeric,Annual USGS Stream Dischange sum in cms
+Discharge_mean_cms_sum_WaterYr,Numeric,Annual Water-year USGS Stream Dischange sum in cms
+ppt_sum,Numeric,Annual PRISM precipitation sum in mm
+ppt_sum_WaterYr,Numeric,Annual PRISM Water-year precipitation sum in mm
+tmindegreesC_mean,Numeric,Annual PRISM temperature min
+tmeandegreesC_mean,Numeric,Annual PRISM temperature mean
+tmaxdegreesC_mean,Numeric,Annual PRISM tmax
+tdmeandegreesC_mean,Numeric,Annual PRISM dewpoint mean
+vpdminhPa_mean,Numeric,PRISM vapour pressure deficit min in hPascals
+vpdmaxhPa_mean,Numeric,PRISM vapour pressure deficit max in hPascals
+PDSI_mean,Numeric,Annual Self-Calibrating Palmer Drought Severity Index (PDSI) mean
+SPI_mean,Numeric,Annual Standardized Precipitation Index (SPI) mean
+SPEI_mean,Numeric,Annual Standardized Precipitation Evapotranspiration Index (SPEI) mean
+ONI_mean,Numeric,Annual NOAA Oceanic Nino Index mean
+PDO_mean,Numeric,Annual NOAA Pacific Decadal Oscillation (PDO) index
+MEI_mean,Numeric,Annual NOAA multivariate ENSO index mean
