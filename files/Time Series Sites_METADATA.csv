@@ -1,0 +1,36 @@
+﻿Variable,Format,Description
+Site,String,Name of wetland site
+DisplayName,String,Name of wetland site for visualization
+DisplayCode,String,Name of wetland site for visualization
+DisplayCodePosition,Numeric,Order in which site is plotted for visualization
+lat,Decimal degrees,Estuary centroid location
+long,Decimal degrees,Estuary centroid location
+Archetype_MayUpdate,String,Archetype classification from Southern California Wetland Recovery Project
+Archetype_2020Update,String,Archetype classification from Southern California Wetland Recovery Project updated
+ArchetypeCode_2020Update,Numeric,Archetype classification from Southern California Wetland Recovery Project code updated
+RSUsubregion,String,Wave climate subregion classification from Southern California Wetland Recovery Project
+Nearest_NOAA,String,Nearest NOAA Tidal Gauge
+Nearest_USGS_code,Numeric,Nearest USGS Stream Discharge Gauge
+Include_073020,Numeric,A variable to filter sites for analysis
+Area_m_updated,Numeric,Wetland area in square meters
+Area_Ha,Numeric,Wetland area in hectares
+Elev_mean,Numeric,Mean wetland elevation in NAVD88
+Perc_Vegetated,Numeric,Percent of wetland that is vegetated based on National Wetland Inventory data for 2016
+Dist_NS_km,Numeric,Latitidinal order in which site is plotted for visualization
+restorationActivities,String,"Categorical bins for site with no restoration, small restoration, and large earth-moving restoration activities"
+DevelArea_PercChange,Numeric,Estimated impervious surface changes from 2001 - 2016 derived from the Landsat-derived National Land Cover Database
+Devel2016_percentArea,Numeric,Percent developed areas in 2016 derived from the Landsat-derived National Land Cover Database
+CDIP_region,String,Coastal region defined by the Coastal Data Information Program (CDIP) 
+PercVegWetland,Numeric,Percent of vegetated and mudflat wetland based on National Wetland Inventory data for 2016
+PercWater,Numeric,Percent of water based on National Wetland Inventory data for 2016
+CPAD_access,String,California Protected Areas Database classification on the level of protection enforced at each wetland site by public agencies or non-profit organizations.
+estuaryEngineering,String,Categorical bins summarizing mouth armorning and channelization
+Armored_mouth,String,"presence/absence of mouth armoring (jetties, seawalls)"
+Engineered_channel,String,presence/absence of mouth channelization
+percTimeMouthOpen,Numeric,Percent time mouth clousure estimate based on estimates of percent closure over time derived from the California Coastal Records Project conducted at the Southern California Coastal Water Research Project
+percTimeMouthCLOSED,Numeric,Percent time mouth closed based on estimates of percent closure over time derived from the California Coastal Records Project conducted at the Southern California Coastal Water Research Project
+closureBin,String,"Percent time estimated clousure categorized as either predominantly open (<40%), intermittently open/closed (40-60%), or predominantly closed (>60%)"
+SCCWRP_Name_Final_Estuary_Boundary_kmz,String,Original wetland/estuary name defined by the Southern California Coastal Water Research Project
+PopDensChange,Numeric,Estimate of population density change in the watershed of each wetland based on the Gridded Population of World Version 4 (GPWv4) data from 2000 to 2020
+restAcreage,Numeric,Estimated acres of restoration impacts determined from restoration literature review
+restPercArea,Numeric,Estimated percent area of restoration impacts relative to wetland size determined from restoration literature review

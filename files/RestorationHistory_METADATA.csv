@@ -1,0 +1,10 @@
+﻿Variable,Format,Description
+Include,Numeric,A variable to filter sites for analysis
+site,String,Name of wetland site
+start,Numeric,Starting year of restoration activity construction
+end,Numeric,Ending year of restoration activity construction
+project,String,"Name listed by the restoration projects on record through the Southern California Wetlands Recovery Project (SCWRP 2021), the California State Coastal Conservancy (CA SCC 2021), EcoAtlas (CWMW 2021)"
+Project Area,Numeric,"Area in acres reported by the restoration projects on record through the Southern California Wetlands Recovery Project (SCWRP 2021), the California State Coastal Conservancy (CA SCC 2021), EcoAtlas (CWMW 2021),"
+Site Area (acres),Numeric,Estimated site area in acres
+Project Perc Area,Numeric,Caclulated percent of project area relative to site area
+Checked,String,internal notation for verifying site data with restoration experts
