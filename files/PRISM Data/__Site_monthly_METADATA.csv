@@ -1,0 +1,17 @@
+Variable,Format,Description
+Date,String,Date format YYYY-MM
+Date_ym,String,Date format YYYY-MM
+Date_ymd,String,Date format M/D/YYYY
+Year,Numeric,Year
+WaterYear,Numeric,Water Year
+pptmm,Numeric,PRISM ppt
+tmindegreesC,Numeric,PRISM temperature min
+tmeandegreesC,Numeric,PRISM temperature mean
+tmaxdegreesC,Numeric,PRISM tmax
+tdmeandegreesC,Numeric,PRISM dewpoint mean
+vpdminhPa,Numeric,PRISM vapour pressure deficit min in hPascals
+vpdmaxhPa,Numeric,PRISM vapour pressure deficit max in hPascals
+PE,Numeric,Potential evapotranspiration
+PDSI,Numeric,Self-Calibrating Palmer Drought Severity Index (PDSI)
+SPI,Numeric,Standardized Precipitation Index (SPI)
+SPEI,Numeric,Standardized Precipitation Evapotranspiration Index (SPEI)
