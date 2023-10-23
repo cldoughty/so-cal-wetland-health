@@ -1,0 +1,3 @@
+Variable,Format,Description
+Date,String,Date-month in YYYYMM format
+Value,Number,NOAA Pacific Decadal Oscillation (PDO) index
