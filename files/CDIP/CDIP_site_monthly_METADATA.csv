@@ -1,0 +1,38 @@
+﻿Variable,Format,Description
+Date_ym,String in YYYY-MM,Date in year-month
+waveTime_mean,String in YYYYMMDD HH:MM:SS,Date-time mean
+waveHs_mean,Numeric,CDIP significant wave height mean
+waveTp_mean,Numeric,CDIP peak wave period mean
+waveTa_mean,String,CDIP average wave period mean
+waveDp_mean,Numeric,CDIP peak wave direction mean
+waveDm_mean,Numeric,CDIP bulk Sxy wave direction mean
+waveSxy_mean,Numeric,CDIP alongshore radiation stress mean
+waveSxx_mean,Numeric,CDIP onshore radiation stress mean
+waveFlagPrimary_mean,Numeric,CDIP primary wave QC flag mean
+waveTime_sd,String in YYYYMMDD HH:MM:SS,Date-time standard deviation
+waveHs_sd,Numeric,CDIP significant wave height standard deviation
+waveTp_sd,Numeric,CDIP peak wave period  standard deviation
+waveTa_sd,Numeric,CDIP average wave period  standard deviation
+waveDp_sd,Numeric,CDIP peak wave direction  standard deviation
+waveDm_sd,Numeric,CDIP bulk Sxy wave direction standard deviation
+waveSxy_sd,Numeric,CDIP alongshore radiation stress standard deviation
+waveSxx_sd,Numeric,CDIP onshore radiation stress standard deviation
+waveFlagPrimary_sd,Numeric,CDIP primary wave QC flag standard deviation
+waveTime_min,String in YYYYMMDD HH:MM:SS,Date-time min
+waveHs_min,Numeric,CDIP significant wave height min
+waveTp_min,Numeric,CDIP peak wave period min
+waveTa_min,Numeric,CDIP average wave period min
+waveDp_min,Numeric,CDIP peak wave direction min
+waveDm_min,Numeric,CDIP bulk Sxy wave direction min
+waveSxy_min,Numeric,CDIP alongshore radiation stress min
+waveSxx_min,Numeric,CDIP onshore radiation stress min
+waveFlagPrimary_min,Numeric,CDIP primary wave QC flag min
+waveTime_max,Numeric,Date-time max
+waveHs_max,Numeric,CDIP significant wave height max
+waveTp_max,Numeric,CDIP peak wave period max
+waveTa_max,Numeric,CDIP average wave period max
+waveDp_max,Numeric,CDIP peak wave direction max
+waveDm_max,Numeric,CDIP bulk Sxy wave direction max
+waveSxy_max,Numeric,CDIP alongshore radiation stress max
+waveSxx_max,Numeric,CDIP onshore radiation stress max
+waveFlagPrimary_max,Numeric,CDIP primary wave QC flag max
