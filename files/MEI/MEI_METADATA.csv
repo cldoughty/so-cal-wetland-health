@@ -1,0 +1,4 @@
+Variable,Format,Description
+YEAR,Numeric,Date format YYYY
+BiMonth,String,Code for two-month period
+MEI,Numeric,NOAA multivariate ENSO index
