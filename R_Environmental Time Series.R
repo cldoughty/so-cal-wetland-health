@@ -12,7 +12,7 @@ library(patchwork)
 library(zoo)
 library(scPDSI)
 library(SPEI)
-library(lfstat) 
+
 
 # Environmental data prep: aggregate to monthly
 #####
@@ -400,63 +400,92 @@ ggsave(filename = "Environmental Time Series.png",
 
 
 #######################################################
-#Calculate Stats and Trends in Regional data?
+#Calculate Stats and Trends in Regional data
 
 # Sea Level
-ts_WLmonthly_all2
+ts_WLmonthly_all4 = ts_WLmonthly_all2 %>%
+  # dplyr::select(-NOAA) %>%
+  dplyr::select(Date_ym, SeaLevel_mean) %>%
+  group_by(Date_ym) %>%
+  summarise_all(list(mean, sd), na.rm=TRUE) %>%
+  rename(SeaLevel_mean = fn1,
+         SeaLevel_mean_sd = fn2)
 
-# Stream Discharge
-ts_Streamflow_monthly_all2
+# waves
+ts_Waves_all3 = ts_Waves_all2 %>%
+  dplyr::select(Date_ym, waveHs_mean) %>%
+  group_by(Date_ym) %>%
+  summarise_all(list(mean, sd), na.rm=TRUE) %>%
+  rename(waveHs_mean = fn1,
+         waveHs_mean_sd = fn2)
   
+# Stream Discharge
+ts_Streamflow_monthly_all3 = ts_Streamflow_monthly_all2 %>%
+  dplyr::select(!c(Site_no, Date)) %>%
+  group_by(Date_ym) %>%
+  summarise_all(list(mean, sd), na.rm=TRUE) %>%
+  dplyr::select(Date_ym, Discharge_mean_cms_fn1, Discharge_mean_cms_fn2) %>%
+  rename(Discharge_mean_cms_mean = Discharge_mean_cms_fn1,
+         Discharge_mean_cms_sd = Discharge_mean_cms_fn2)
+
 # Temp and Precip and drought
-ts_TempPrecip_all3b = ts_TempPrecip_all2 %>%
+ts_TempPrecip_all4 = ts_TempPrecip_all2 %>%
   rename(PDSI=PDSI_mean,
          SPI=SPI_mean,
          SPEI=SPEI_mean) %>%
-  mutate(SPEI= na_if(SPEI, -Inf))
+  mutate(SPEI= na_if(SPEI, -Inf)) 
 
 #Climate INdices
 ts_monthly_droughtb = ts_ONI %>%
+  dplyr::select(-PHASE) %>%
   left_join(ts_PDO, by='Date_ym') %>%
-  left_join(ts_MEI, by='Date_ym') %>%
-  mutate(Date = ymd(paste(Date_ym, "-01", sep=""))) %>%
-  filter(Date > "1984-04-01", Date < "2020-01-01")
+  left_join(ts_MEI, by='Date_ym') #%>%
+  # mutate(Date = ymd(paste(Date_ym, "-01", sep=""))) %>%
+  # filter(Date > "1984-04-01", Date < "2020-01-01")
+
+# # Merge 
+#  1984 + 5
+#  1984 + 2.5
+#  2019 - 5
+#  2019 - 2.5
+#  2009 +5
  
 #Monthly
-ts_monthly_enviro_REGION = ts_WLmonthly_all2 %>%
-  left_join(ts_Waves_all2, by='Date_ym') %>%
-  left_join(ts_Streamflow_monthly_all2, by='Date_ym') %>%
-  left_join(ts_TempPrecip_all3b, by='Date_ym') %>%
+ts_monthly_enviro_REGION = ts_WLmonthly_all4 %>%
+  left_join(ts_Waves_all3, by='Date_ym') %>%
+  left_join(ts_Streamflow_monthly_all3, by='Date_ym') %>%
+  left_join(ts_TempPrecip_all4, by='Date_ym') %>%
   left_join(ts_monthly_droughtb, by='Date_ym') %>%
-  mutate(Year = year(Date.x)) %>% 
+  mutate(Year = year(Date)) %>% 
   mutate(Comp = ifelse(Year <= 1989, 1986, ifelse(Year >= 2014, 2016, 999))) 
 # %>%
 #   select(-NOAA, -Site, -RSUsubregion,-CDIPregion,-CDIPregion2,-SeaLevel_mean_RegAvg_filled, -SeaLevel_mean_filled, -Site_no, -Date.x, -Date.y, -PHASE, -Date, -Date_ym)
+ts_monthly_enviro_REGION
 
 
 # Summarize beginning and end values
 ts_StartEnd_summary = ts_monthly_enviro_REGION %>%
-  select(-RSUsubregion) %>%
+  # dplyr::select(-RSUsubregion) %>%
   filter(Comp !=999) %>%
-  select(-Year) %>%
+  dplyr::select(-Year) %>%
   group_by(Comp) %>%
-  summarise_all(list(mean, sd), na.rm=FALSE)
-
-ts_monthly_enviro_REGION
+  summarise_all(list(mean, sd), na.rm=TRUE)
+ts_StartEnd_summary
 
 #CDIP not in beginning...
-test = ts_Waves_all2 %>%
-  filter(Date <= as.Date("2005-12-31"))
+testNEW = ts_monthly_enviro_REGION %>%
+  filter(Year == (2000:2005))
+mean(testNEW$waveHs_mean)
+sd(testNEW$waveHs_mean)
 
-mean(test$waveHs_mean)
-sd(test$waveHs_mean)
+names(ts_monthly_enviro_REGION)
 
 # Summarize by year then get trend
 ts_enviroTRENDS = ts_monthly_enviro_REGION %>%
     group_by(Year) %>%
     summarise(SeaLevel_mean = mean(SeaLevel_mean, na.rm=TRUE),
               #SeaLevel_mean_filled = mean(SeaLevel_mean_filled, na.rm=TRUE),
-              Discharge_mean_cms_sum = sum(Discharge_mean_cms, na.rm=FALSE),
+              Discharge_mean_cms_sum = sum(Discharge_mean_cms_mean, na.rm=TRUE),
               ppt_sum = sum(ppt_mean, na.rm=TRUE),
               waveHs_mean = mean(waveHs_mean, na.rm=TRUE),
               tmindegreesC_mean = mean(tmindegreesC_mean, na.rm=TRUE),
@@ -472,38 +501,31 @@ ts_enviroTRENDS = ts_monthly_enviro_REGION %>%
               PDO_mean = mean(PDO, na.rm=TRUE),
               MEI_mean = mean(MEI, na.rm=TRUE))
 
-ts_enviroTRENDS = subset(ts_enviroTRENDS, Year!="NA")
-
-
 #Sen's slope
 library(trend)
-list[[1]]
 list=c("SeaLevel_mean","waveHs_mean","Discharge_mean_cms_sum","ppt_sum",
        "tmindegreesC_mean", "tmeandegreesC_mean","tmaxdegreesC_mean",
        "tdmeandegreesC_mean","vpdminhPa_mean","vpdmaxhPa_mean",
        "PDSI_mean","SPI_mean","SPEI_mean","ONI_mean","PDO_mean","MEI_mean")
 
-sensTest = sens.slope(ts_enviroTRENDS$waveHs_mean,
-                      conf.level = 0.95)
+sensTest = sens.slope(ts_enviroTRENDS$SeaLevel_mean, conf.level = 0.95)
+sensTest$estimates
+sensTest$p.value
+
+sub = subset(ts_enviroTRENDS, waveHs_mean !="NaN")
+sensTest = sens.slope(sub$waveHs_mean, conf.level = 0.95)
 sensTest$estimates
 sensTest$p.value
 
 
-sensTest = sens.slope(ts_enviroTRENDS$ppt_sum,
-                      conf.level = 0.95)
+sensTest = sens.slope(ts_enviroTRENDS$ppt_sum, conf.level = 0.95)
 sensTest$estimates
 sensTest$p.value
 
-
-dat = ts_enviroTRENDS$Discharge_mean_cms_sum[!is.na(ts_enviroTRENDS$Discharge_mean_cms_sum)]
-sensTest = sens.slope(dat,
-                      conf.level = 0.95)
+sensTest = sens.slope(ts_enviroTRENDS$Discharge_mean_cms_sum, conf.level = 0.95)
 sensTest$estimates
 sensTest$p.value
 
-
-dat2 = ts_enviroTRENDS$ppt_sum[!is.na(ts_enviroTRENDS$ppt_sum)]
-sensTest = sens.slope(dat2,
-                      conf.level = 0.95)
+sensTest = sens.slope(ts_enviroTRENDS$tmindegreesC_mean, conf.level = 0.95)
 sensTest$estimates
 sensTest$p.value
