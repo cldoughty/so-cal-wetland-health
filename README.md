@@ -16,4 +16,5 @@ Drivers of Wetland NDVI and Area - **R_Environmental Driver HGAMs.r** uses the a
 To run these scripts in R studio, ensure your working directory and output directory are correct and include the "files" folder from this repository.
 
 ## Suggested Citation
-Doughty, C.L., Tracking the Health of Southern California's Coastal Wetlands using the Landsat Archive (so-cal-wetland-health), (2024), GitHub repository, https://github.com/cldoughty/so-cal-wetland-health. DOI: 10.5281/zenodo.10640938
+Doughty, C.L., Tracking the Health of Southern California's Coastal Wetlands using the Landsat Archive (so-cal-wetland-health), (2024), GitHub repository, https://github.com/cldoughty/so-cal-wetland-health. 
+[![DOI](https://zenodo.org/badge/707218625.svg)](https://zenodo.org/doi/10.5281/zenodo.10640937)
